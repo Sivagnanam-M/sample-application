@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: app-service
+  labels:
+    name: app
+    env: prd
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: app
+        env: prd
+    spec:
+      containers:
+        - name: app
+          image: sivagnanamm/flask-uwsgi-sample
+          imagePullPolicy: Always
+          ports:
+          - name: app-server
+            containerPort: 80
+          env:
+          - name: ENV
+            value: prd
+
+      volumes:
+        - name: ssl-certs
+          hostPath:
+            path: /etc/ssl/certs
+        - name: cloudsql
+          emptyDir: {}
