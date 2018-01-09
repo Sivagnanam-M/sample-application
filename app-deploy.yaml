@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: sivagnanamm/flask-uwsgi-sample
+          image: gcr.io/kf3-test-sanbox/flask-uwsgi-sample:v1
           imagePullPolicy: Always
           ports:
           - name: app-server

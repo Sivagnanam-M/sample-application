@@ -1,13 +1,14 @@
 from flask import Flask
 import requests
-
+import random
 
 
 app = Flask(__name__)
 
 
 def home():
-    req = requests.get('https://s3.amazonaws.com/cloneexport/Ap24168f58_3337_11e5_9424_22000ab34466/sysapplication.csv')
+    n = random.randint(1, 4)
+    req = requests.get('https://s3.amazonaws.com/rajesh-test11/%s.json' % n)
     return req.text 
 
 app.add_url_rule(rule='/', endpoint='home', view_func=home, methods=['GET'])
