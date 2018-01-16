@@ -6,7 +6,7 @@ metadata:
     name: app
     env: prd
 spec:
-  replicas: 1
+  replicas: 3
   template:
     metadata:
       labels:
@@ -23,7 +23,11 @@ spec:
           env:
           - name: ENV
             value: prd
-
+          resources: 
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "100m"
       volumes:
         - name: ssl-certs
           hostPath:
